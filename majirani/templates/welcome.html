@@ -1,0 +1,47 @@
+{%extends 'bas.html'%}
+{% load static %}
+{% load bootstrap3%}
+{% block content %}
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img src="https://mycommunity.org.uk/wp-content/uploads/2017/02/shutterstock_220238260.jpg" alt="Los Angeles" width="100%" height="500" div>
+              <div class="carousel-caption"  ">
+                <h3 style="font-family: 'Saira Stencil One', cursive; font-size:50px;">MAJIRANI PAMOJA</h3>
+                <p style="font-family: 'Courgette', cursive;font-size: 2.5em;color: yellow;">We come together to make great things happen!</p>
+                <div class="col-md-3" style="margin-left: 35%;">
+                    <a href="{% url 'Home'%}"><button class="btn btn-secondary" style="font-size: 1.2em;">Join us</button></a>
+                    <a  href="/accounts/register/"><button class="btn btn-secondary" style="font-size: 1.2em;">Sign up</button></a>
+                </div>
+              </div> 
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.alexhouse.net/sites/default/files/assets/images/WR%20Rotary-Vols-%20fence.jpg" alt="Chicago" width="100%" height="500">
+            <div class="carousel-caption" >
+              <h3 style="font-family: 'Saira Stencil One', cursive; font-size:50px;">WE COME WITH A MISSION</h3>
+              <p style="font-family: 'Courgette', cursive;font-size: 2.5em;color: yellow;">We work together to accomplish one goal!</p>
+              <a href="{% url 'about'%}"><button class="btn btn-secondary" style="font-size: 1.3em;">ABOUT US</button></a> 
+            </div>   
+          </div>
+          <div class="carousel-item">
+              <img src="http://www.rivegaucheresidentiel.com/gx/01/Vue_aerienne_02_lifestyle.jpg" alt="New York" width="100%" height="500">
+              <div class="carousel-caption" >
+                <h3 style="font-family: 'Saira Stencil One', cursive; font-size:50px;">WE BELIEVE IN WHAT YOU CAN</h3>
+                <p style="font-family: 'Courgette', cursive;font-size: 2.5em;color: yellow;">Thats why we all call it the neighbourhood!</p>
+              </div>      
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+   </div>
+{% endblock %}
