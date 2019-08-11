@@ -1,0 +1,37 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+    .carousel-caption{
+      transform: translate(0% , -150%);
+    }
+    .target{
+      transform: translate(0% , -6250%);
+      height: 20px;
+    }
+    section {
+    padding: 60px 0;
+    }
+    
+    section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    }
+    
+    .carousel-caption{
+    transform: translate(0% , -150%);
+    }
+    .target{
+    transform: translate(0% , -6250%);
+    height: 20px;
+    }
+    section {
+    padding: 60px 0;
+    }
+    
+    
+    
