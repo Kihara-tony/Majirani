@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body{
+       background-color: wheat;
+    }
+    li {
+        display: inline;
+    }
+    ul{
+        margin-top: 1em;
+    }
+    card-body{
+        opacity: 0.1;
+    }
+    img {
+        style: height: 10rem;
+    }
+</style>
+
+<body>
+ <div class="row">
+    {% for hood in hoods %}
+     <ul>
+         <li>
+            <div class="card" style="width: 18rem; height: 20rem;">
+              <img  style="height: 10rem;"class="card-img-top" src="{{hood.image.url}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{hood.name}}</h5>
+                <p class="card-text">{{hood.description}}</p>
+              </div>
+              <div class="footer">
+                  <div style="margin-left: 1em;">
+                  <!--<button class="btn btn-primary"><a href="/neighbourhood/{{hood.id}}"><strong>Explore</strong></a></button>-->
+
+                      <button class="btn btn-outline-primary enterhoodbtn navigation"> <a href="{% url 'enterhood' neighbourhood_id=hood.id %}">Join Hood</a></button>
+
+                  </div>
+              </div>
+            </div>
+         </li>
+     </ul>
+    {% endfor %}
+ </div>
+</body>
+{% endblock %}
