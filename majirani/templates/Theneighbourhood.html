@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load bootstrap3%}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-kit/1.1.0/css/material-kit.css">
+<style>
+body {
+         background-color: wheat;
+        }
+
+</style>
+
+<body>
+  <div>
+    {% for hood in hood %}
+    <div class="card" style="width: 300px; height: 550px; margin-left: 33em;">
+      <img class="card-img-top" style="width: 300px; height: 200px;" src="{{hood.image.url}}" alt="Card image cap">
+      <div class="card-body">
+         <div class="row">
+             <div class="col-md-4">
+                <h5 class="card-title">{{hood.name}}</h5>
+             </div>
+             <div class="col-md-8">
+                <a href="{% url 'exithood' neighbourhood_id=hood.id %}"><button class="btn btn-danger enterhoodbtn navigation">Exit Group</button></a>
+             </div>
+         </div>
+
+        <p class="card-text">{{hood.description}}</p>
+         <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Police:   {{hood.police}}</strong></li>
+          <li class="list-group-item"><strong>Hospital: {{hood.Hospital}}</strong></li>
+          <li class="list-group-item"><strong>Admin:    {{hood.admin}}</strong></li>
+         </ul>
+      <div class="row">
+          <div class="col-md-6">
+              <a href="{% url 'post' %}"><button class="btn btn-success">New Post</button></a>
+          </div>
+          <div class="col-md-6">
+              <a  href="{% url 'newbiz' %}"><button style="width: 130px;" class="btn btn-success">New Business</button></a>
+          </div>
+      </div>
+   </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="container row" style="margin-left: 13em; margin-top: 2em;">
+    <div class="col-md-6">
+        <div class="card" style="width: 300px;margin-bottom: 1em;">
+            <p class="card-header" style="width: 300px; text-align: center;"><em>BUSINESSES</em></p>
+        </div>
+        {% for biz in bsns %}
+        <div class="card mb-2" style="width:300px;">
+            <div class="card-header">Name: {{biz.name}}</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Email: {{biz.email}}</strong></li>
+              <li class="list-group-item"><strong>Phone: {{biz.number}}</strong></li>
+              <li class="list-group-item"><strong>Owner: {{biz.user}}</strong></li>
+            </ul>
+            <a  href="{% url 'newbiz' %}"><button style="width: 130px;" class="btn btn-success">Edit Business</button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-6">
+        <div class="card" style="width: 300px;margin-bottom: 1em; ">
+            <p class="card-header" style="width: 300px; text-align: center;"><em>POSTS</em></p>
+        </div>
+        {% for post in post %}
+        <div class="card mb-2" style="width:300px;">
+            <div class="card-header">BY: {{post.user}}</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>{{post.content}}</strong></li>
+            </ul>
+             {% for comment in post.comment.all %}
+                <li style="list-style: none;">
+                    {{comment.user.username}}
+                    {{comment.comment}}
+                </li>
+             {% endfor%}
+                <form action="/comment/{{post.id}}" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <input type="submit" class="btn btn-success btn-lg" value="comment">
+                </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+</body>
+{% endblock %}
