@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<style>
+ body{
+       background-color: wheat;
+    }
+</style>
+
+<body>
+	<div class="card" style="width:500px;position:relative;left:30%;">
+		<div class="row">
+			<div class="col-md-6">
+				<img style="width: 250px;"class="card-img-top" src="{{ profile.avatar.url }}"/>
+			</div>
+			<div class="col-md-6" style="background-color:#50612A;">
+				<div class="card-body"  >
+					<h4 class="card-title">{{user.username}}</h4><br>
+					<h6 class="card-subtitle">{{user.email}}</h6><br>
+					<h6 class="card-subtitle">{{profile.neighbourhood}}</h6><br>
+					<p class="card-subtitle">{{profile.bio}}</p>
+                  <a class="nav-link" href="neighbourhood/{{neighbourhood_name.id}}"><button class="btn btn-success"><strong>New Neighbourhood</strong></button></a>&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card" style="width: 300px;margin-bottom: 1em;margin-left: 3em;">
+			<p class="card-header" style="width: 300px; text-align: center;"><em>BUSINESSES</em></p>
+		</div>
+		{% for biz in bsns %}
+		<div class="card mb-2" style="width:300px; margin-left: 3em;">
+			<div class="card-header">Name: {{biz.name}}</div>
+			<ul class="list-group list-group-flush">
+			  <li class="list-group-item"><strong>Email: {{biz.email}}</strong></li>
+			  <li class="list-group-item"><strong>Phone: {{biz.number}}</strong></li>
+			  <li class="list-group-item"><strong>Owner: {{biz.user}}</strong></li>
+			</ul>
+			<a  href="updatebiz/{{biz.id}}"><button style="width: 130px;" class="btn btn-success">Edit</button></a>
+		</div>
+	{% endfor %}
+	</div>
+	<div class="col-md-6">
+	<div class="card" style="width: 300px;margin-bottom: 1em; ">
+		<p class="card-header" style="width: 300px; text-align: center;"><em>POSTS</em></p>
+	</div>
+	{% for post in post %}
+	<div class="card mb-2" style="width:300px;">
+		<div class="card-header">BY: {{post.user}}</div>
+		<ul class="list-group list-group-flush">
+		  <li class="list-group-item"><strong>{{post.content}}</strong></li>
+		</ul>
+	</div>
+	{% endfor %}
+	</div>
+</div>
+</body>
+{% endblock%}
